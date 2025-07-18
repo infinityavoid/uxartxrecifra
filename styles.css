@@ -309,7 +309,7 @@ button {
   margin-bottom: 2px;
 }
 
-.grid-header__sub-grid-quater:not(.closed) {
+.grid-header__sub-grid-quater.current {
   .sub-grid-quater, .cell {
     background-color: #F6F6F6;
   }
@@ -318,9 +318,19 @@ button {
   }
 }
 
-.accordion-sub-grid:not(.closed) {
+.accordion-sub-grid.current {
   .empty-cell, .content-cell  {
     background-color: #F6F6F6;
+  }
+}
+
+.accordion-sub-grid.current + .empty-cell.last {
+  background-color: #EFEFEF;
+}
+
+.grid-header__sub-grid-quater:not(.closed) {
+  .cell.last {
+    background-color: #EFEFEF;
   }
 }
 
