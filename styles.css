@@ -32,7 +32,7 @@
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-Regular.woff) format('woff');
-  font-style: normal;    
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -48,7 +48,7 @@
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-SemiBold.woff) format('woff');
-  font-style: normal;    
+  font-style: normal;
   font-weight: 600;
 }
 
@@ -298,6 +298,7 @@ button {
   svg {
     rotate: 0deg;
   }
+
   .grid-header__sub-grid-quater_inner {
     width: 0;
   }
@@ -310,32 +311,47 @@ button {
 }
 
 .grid-header__sub-grid-quater.current {
-  .sub-grid-quater, .cell {
+
+  .sub-grid-quater,
+  .cell {
     background-color: #F6F6F6;
   }
+
   .cell.last {
     background-color: #EFEFEF;
   }
 }
 
 .accordion-sub-grid.current {
-  .empty-cell, .content-cell  {
+  .content-cell {
     background-color: #F6F6F6;
   }
 }
 
-.accordion-sub-grid.current + .empty-cell.last {
-  background-color: #EFEFEF;
+.accordion.open {
+  .accordion-sub-grid.current {
+    .empty-cell {
+      background-color: #F6F6F6;
+    }
+  }
+  .accordion-sub-grid:not(.current):not(.closed) + .empty-cell.last {
+    background-color: #EFEFEF;
+  }
+  .accordion-sub-grid:not(.current):not(.closed) + .content-cell.last {
+    background-color: #EFEFEF;
+  }
+  .accordion-sub-grid.current:not(.closed) + .content-cell.last {
+    background-color: #EFEFEF;
+  }
+  .accordion-sub-grid.current:not(.closed) + .empty-cell.last {
+    background-color: #EFEFEF;
+  }
 }
 
 .grid-header__sub-grid-quater:not(.closed) {
   .cell.last {
     background-color: #EFEFEF;
   }
-}
-
-.accordion-sub-grid:not(.closed) + .empty-cell.last {
-  background-color: #EFEFEF;
 }
 
 .grid-header__sub-grid-quater_inner {
@@ -421,19 +437,22 @@ button {
   width: 135px;
 }
 
-.empty-cell.last{
+.empty-cell.last {
   width: 163px;
 }
 
 .cell.first {
   width: 194px;
 }
+
 .cell.second {
   width: 141px;
 }
+
 .cell.third {
   width: 135px;
 }
+
 .cell.last {
   width: 163px;
 }
@@ -455,12 +474,15 @@ button {
 .content-cell.first {
   width: 194px;
 }
+
 .content-cell.second {
   width: 141px;
 }
+
 .content-cell.third {
   width: 135px;
 }
+
 .content-cell.last {
   width: 163px;
 }
@@ -476,6 +498,7 @@ button {
   display: grid;
   grid-template-rows: 40px 0fr;
   transition: .35s;
+
   svg {
     transition: .35s;
   }
@@ -483,6 +506,7 @@ button {
 
 .accordion.open {
   grid-template-rows: 40px 1fr;
+
   svg {
     rotate: 180deg;
   }
@@ -534,11 +558,19 @@ button {
   display: flex;
 }
 
-.col-end, .empty-cell.end, .content-cell.end {
+.col-end,
+.empty-cell.end,
+.content-cell.end {
   border-bottom: 1px solid #E6E6E6;
 }
 
-.grid-cell, .sub-grid-quater, .cell, .accordion-title, .accordion-content__title, .empty-cell:not(.end), .content-cell:not(.end) {
+.grid-cell,
+.sub-grid-quater,
+.cell,
+.accordion-title,
+.accordion-content__title,
+.empty-cell:not(.end),
+.content-cell:not(.end) {
   border-right: 1px solid #E6E6E6;
   border-bottom: 1px solid #E6E6E6;
 }
@@ -552,7 +584,7 @@ button {
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
-  color:#090714;
+  color: #090714;
 }
 
 .accordion-content__title_desc {
@@ -568,12 +600,10 @@ button {
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
-  color:#090714;
+  color: #090714;
 }
 
-.second-block__footer {
-
-}
+.second-block__footer {}
 
 .pagination {
   display: flex;
@@ -603,7 +633,8 @@ button {
   align-items: center;
 }
 
-.pagination-main__prev, .pagination-main__next {
+.pagination-main__prev,
+.pagination-main__next {
   font-family: Suisse Intl;
   font-weight: 400;
   font-size: 14px;
@@ -616,7 +647,8 @@ button {
   gap: 4px;
 }
 
-.pagination-main__next.disabled, .pagination-main__prev.disabled {
+.pagination-main__next.disabled,
+.pagination-main__prev.disabled {
   color: #9C9AA5;
 }
 
@@ -701,7 +733,7 @@ button {
   cursor: pointer;
   height: 38px;
   text-decoration: none;
-  color:#090714;
+  color: #090714;
 }
 
 ::-webkit-scrollbar {
