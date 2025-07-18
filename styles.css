@@ -141,29 +141,20 @@ button {
   gap: 8px;
 }
 
-.first-block__content-cell-input {
+.first-block__content-cell-content {
   width: 143px;
   height: 40px;
   border-radius: 8px;
   background-color: #F6F6F6;
   padding: 4px;
-  outline: none;
-  border: none;
   text-align: center;
-  font-family: Inter;
+  font-family: Suisse Intl;
   font-weight: 600;
   font-size: 14px;
   line-height: 100%;
-}
-
-.first-block__content-cell-input::-webkit-outer-spin-button,
-.first-block__content-cell-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.first-block__content-cell-input[type=number] {
-  -moz-appearance: textfield;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .first-block__description {
@@ -315,6 +306,26 @@ button {
 .grid-header__sub-grid-quater svg {
   transition: .35s;
   rotate: 180deg;
+  margin-bottom: 2px;
+}
+
+.grid-header__sub-grid-quater:not(.closed) {
+  .sub-grid-quater, .cell {
+    background-color: #F6F6F6;
+  }
+  .cell.last {
+    background-color: #EFEFEF;
+  }
+}
+
+.accordion-sub-grid:not(.closed) {
+  .empty-cell, .content-cell  {
+    background-color: #F6F6F6;
+  }
+}
+
+.accordion-sub-grid:not(.closed) + .empty-cell.last {
+  background-color: #EFEFEF;
 }
 
 .grid-header__sub-grid-quater_inner {
@@ -324,19 +335,14 @@ button {
   overflow: hidden;
 }
 
-.quater-cell {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .sub-grid-quater {
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: .35s;
+  gap: 4px;
 }
 
 .cell {
@@ -350,6 +356,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.quater-cell {
+  text-align: center;
+  height: auto;
 }
 
 .col-end {
@@ -380,6 +391,7 @@ button {
 
 .empty-cell {
   height: 40px;
+  transition: .35s;
 }
 
 .empty-cell.end {
@@ -427,6 +439,7 @@ button {
   align-items: center;
   padding-right: 14px;
   justify-content: flex-end;
+  transition: .35s;
 }
 
 .content-cell.first {
