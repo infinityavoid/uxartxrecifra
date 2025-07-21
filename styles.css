@@ -28,7 +28,7 @@
   font-weight: 300;
 }
 
-/* Normal */
+/* Regular */
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-Regular.woff) format('woff');
@@ -44,7 +44,7 @@
   font-weight: 500;
 }
 
-/* Bold */
+/* SemiBold */
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-SemiBold.woff) format('woff');
@@ -52,7 +52,7 @@
   font-weight: 600;
 }
 
-/* Black */
+/* Bold */
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-Bold.woff) format('woff');
@@ -60,7 +60,7 @@
   font-weight: 700;
 }
 
-/* Black */
+/* Book */
 @font-face {
   font-family: 'Suisse Intl';
   src: url(./fonts/SuisseIntl-Book.woff) format('woff');
@@ -74,10 +74,6 @@
   src: url(./fonts/Roboto-Black.ttf) format('woff');
   font-style: normal;
   font-weight: 900;
-}
-
-html {
-  /*scrollbar-gutter: stable;*/
 }
 
 button {
@@ -262,11 +258,6 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: Suisse Intl;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 100%;
-  color: #9C9AA5;
 }
 
 .second-block__main {
@@ -281,6 +272,8 @@ button {
   padding-bottom: 10px;
   margin-top: 24px;
   margin-bottom: 34px;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid-header {
@@ -413,6 +406,10 @@ button {
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
+  position: sticky;
+  left: 0;
+  background-color: white;
+  z-index: 1;
 }
 
 .empty-cell {
@@ -496,6 +493,7 @@ button {
 
 .accordion {
   display: grid;
+  /*height: 40px;*/
   grid-template-rows: 40px 0fr;
   transition: .35s;
 
@@ -506,10 +504,16 @@ button {
 
 .accordion.open {
   grid-template-rows: 40px 1fr;
-
   svg {
     rotate: 180deg;
   }
+ 
+}
+
+.empty-block {
+  flex: 1;
+  z-index: 1;
+  background-color: white;
 }
 
 .accordion-header {
@@ -526,6 +530,8 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px 0 16px;
+  position: sticky;
+  left: 0;
 }
 
 .accordion-sub-grid {
@@ -542,11 +548,13 @@ button {
 .accordion-content {
   display: flex;
   flex-direction: column;
+  transition: .35s;
   overflow: hidden;
 }
 
 .accordion-content__row {
   display: flex;
+  position: relative;
 }
 
 .accordion-content__title {
@@ -556,7 +564,16 @@ button {
   flex-direction: column;
   padding: 10px 12px 10px 16px;
   display: flex;
+  background-color: white;
+  position: absolute;
+  top:0;
+  will-change: left;
 }
+.accordion-content__title_empty {
+  width: 434px;
+  height: 58px;
+}
+
 
 .col-end,
 .empty-cell.end,

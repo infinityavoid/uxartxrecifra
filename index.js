@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=> {
   const quaters = document.querySelectorAll('.sub-grid-quater')
+
   quaters.forEach((el)=>{
     el.addEventListener('click', ()=>{
       parentEl = el.parentElement
@@ -11,22 +12,44 @@ document.addEventListener('DOMContentLoaded', ()=> {
       })
     })
   })
+
+
   const accordions = document.querySelectorAll('.accordion-title')
+
   accordions.forEach((el)=>{
     el.addEventListener('click', (el)=>{
       const container = el.target.closest('.accordion')
       container.classList.toggle('open')
     })
   })
+
+
+  const gridContainer = document.querySelector('.grid-container');
+  const elementsToMove = document.querySelectorAll('.accordion-content__title');
+
+  function updateElementPositions() {
+    const scrollPosition = gridContainer.scrollLeft;
+
+    elementsToMove.forEach(element => {
+      element.style.left = scrollPosition + 'px';
+    });
+  }
+
+  gridContainer.addEventListener('scroll', updateElementPositions);
+
+  updateElementPositions();
+
+
   const select = document.querySelector('.select-current')
   const selectOptions = document.querySelector('.select-options')
 
   select.addEventListener('click', () => {
     selectOptions.classList.toggle('open');
   });
+
   document.addEventListener('click', (event) => {
     if (!select.contains(event.target)) {
       selectOptions.classList.remove('open');
     }
-    });
+  });
 })
