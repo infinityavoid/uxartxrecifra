@@ -13,32 +13,46 @@ document.addEventListener('DOMContentLoaded', ()=> {
     })
   })
 
+  const accordions = document.querySelectorAll('.accordion-title');
 
-  const accordions = document.querySelectorAll('.accordion-title')
-
-  accordions.forEach((el)=>{
-    el.addEventListener('click', (el)=>{
-      const container = el.target.closest('.accordion')
-      container.classList.toggle('open')
-    })
-  })
-
-
-  const gridContainer = document.querySelector('.grid-container');
-  const elementsToMove = document.querySelectorAll('.accordion-content__title');
-
-  function updateElementPositions() {
-    const scrollPosition = gridContainer.scrollLeft;
-
-    elementsToMove.forEach(element => {
-      element.style.left = scrollPosition + 'px';
+  function setZIndexForAccordions() {
+    const accordionContainers = document.querySelectorAll('.accordion');
+    accordionContainers.forEach((container, index) => {
+      container.style.zIndex = accordionContainers.length - index;
     });
   }
 
-  gridContainer.addEventListener('scroll', updateElementPositions);
+  setZIndexForAccordions();
 
-  updateElementPositions();
 
+  accordions.forEach((el) => {
+    el.addEventListener('click', (event) => {
+      const container = event.target.closest('.accordion');
+      if (!container) return;
+
+      container.classList.toggle('open');
+      const content = container.querySelector('.accordion-content');
+
+      if (!content) return;
+
+      if (container.classList.contains('open')) {
+        content.style.height = content.scrollHeight + 'px';
+        content.style.transform = 'translateY(0)';
+      } else {
+        content.style.height = '0px';
+        content.style.transform = `translateY(-${content.scrollHeight}px)`;
+      }
+    });
+  });
+
+  const initialClosedAccordions = document.querySelectorAll('.accordion:not(.open)');
+
+  initialClosedAccordions.forEach((el) => {
+    const content = el.querySelector('.accordion-content');
+    if (content) {
+      content.style.transform = `translateY(-${content.scrollHeight}px)`;
+    }
+  });
 
   const select = document.querySelector('.select-current')
   const selectOptions = document.querySelector('.select-options')

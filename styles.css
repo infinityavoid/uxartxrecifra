@@ -280,11 +280,15 @@ button {
   display: grid;
   grid-template-columns: 434px min-content minmax(280px, 1fr);
   color: #9C9AA5;
+  z-index: 101;
+  background-color: white;
 }
 
 .grid-header__sub-grid {
   display: grid;
   grid-template-columns: auto repeat(3, 1fr);
+  z-index: 100;
+  background-color: white;
 }
 
 .grid-header__sub-grid-quater.closed {
@@ -409,7 +413,7 @@ button {
   position: sticky;
   left: 0;
   background-color: white;
-  z-index: 1;
+  z-index: 101;
 }
 
 .empty-cell {
@@ -493,21 +497,25 @@ button {
 
 .accordion {
   display: grid;
-  /*height: 40px;*/
-  grid-template-rows: 40px 0fr;
   transition: .35s;
-
   svg {
     transition: .35s;
   }
 }
 
 .accordion.open {
-  grid-template-rows: 40px 1fr;
   svg {
     rotate: 180deg;
   }
+  .accordion-content {
+    opacity: 1;
+  }
  
+}
+
+.accordion:not(.open) .accordion-content {
+  user-select: none;
+  pointer-events: none;
 }
 
 .empty-block {
@@ -519,6 +527,8 @@ button {
 .accordion-header {
   display: flex;
   align-items: center;
+  z-index: 1000;
+  background-color: white;
 }
 
 .accordion-title {
@@ -549,7 +559,10 @@ button {
   display: flex;
   flex-direction: column;
   transition: .35s;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  height: 0;
+  opacity: 0;
+  transform: translateY(0);
 }
 
 .accordion-content__row {
@@ -565,13 +578,13 @@ button {
   padding: 10px 12px 10px 16px;
   display: flex;
   background-color: white;
-  position: absolute;
-  top:0;
-  will-change: left;
+  position: sticky;
+  left: 0;
 }
 .accordion-content__title_empty {
   width: 434px;
   height: 58px;
+  display: none;
 }
 
 
@@ -619,8 +632,6 @@ button {
   line-height: 140%;
   color: #090714;
 }
-
-.second-block__footer {}
 
 .pagination {
   display: flex;
