@@ -71,7 +71,7 @@
 /* Black */
 @font-face {
   font-family: 'Suisse Intl';
-  src: url(./fonts/Roboto-Black.ttf) format('woff');
+  src: url(./fonts/SuisseIntl-Black.ttf) format('woff');
   font-style: normal;
   font-weight: 900;
 }
@@ -85,8 +85,8 @@ button {
 .main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px 0 60px;
+  gap: 12px;
+  padding: 20px 0 45px;
   width: 100%;
   background-color: #F6F6F6;
   height: 100dvh;
@@ -101,52 +101,53 @@ button {
 
 .first-block {
   display: flex;
-  gap: 47px;
-}
-
-.first-block__inner {
-  display: flex;
-  gap: 16px;
+  gap: 80px;
+  padding: 22.5px 20px;
   align-items: center;
-  min-width: 874px;
 }
 
 .first-block__title {
   font-family: Suisse Intl;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
+  font-weight: 500;
+  font-size: 16px;
   color: #090714;
 }
 
-.first-block__title.prem {
-  margin-top: 10px;
-  font-weight: 500;
-  margin-right: 4px;
-  width: 175px;
+.first-block .first-block__container:first-child .first-block__title {
+  line-height: 140%;
+}
+.first-block .first-block__container:last-child .first-block__title {
+  line-height: 114%;
+}
+
+.first-block__container {
+  display: flex;
+  gap: 24px;
+  flex: 1;
 }
 
 .first-block__content {
   display: flex;
   gap: 12px;
+  flex: 1;
 }
 
 .first-block__content-cell {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 }
 
 .first-block__content-cell-content {
-  width: 143px;
-  height: 40px;
+  height: 48px;
   border-radius: 8px;
   background-color: #F6F6F6;
   padding: 4px;
   text-align: center;
   font-family: Suisse Intl;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 100%;
   display: flex;
   align-items: center;
@@ -156,48 +157,37 @@ button {
 .first-block__description {
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 130%;
   color: #9C9AA5;
 }
 
 .first-block__content-multiplier {
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .first-block__content-equals {
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
-.first-block__content-cell-output {
-  width: 143px;
-  height: 40px;
-  border-radius: 8px;
+.first-block__content-cell-content.output {
   background-color: #F2EDFF;
   color: #754BE9;
-  padding: 4px;
   outline: none;
   border: none;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Suisse Intl;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
 }
 
 .first-block__divider {
   opacity: 0.1;
   border-color: #000;
+  height: 100%;
 }
 
 .first-block__content-card {
-  width: 516px;
   height: 61px;
+  flex: 1;
   background-color: #F6F6F6;
-  padding: 14px 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   justify-content: space-between;
   display: flex;
@@ -208,6 +198,21 @@ button {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.first-block__content-card-title {
+  font-family: Suisse Intl;
+  font-size: 16px;
+  font-weight: 400;
+  color: #090714;
+}
+
+.first-block__content-card-description {
+  font-family: Suisse Intl;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  color: #9C9AA5;
 }
 
 .first-block__content-card_num {
@@ -245,9 +250,10 @@ button {
   outline: none;
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 125%;
   color: #AAAAAA;
+  caret-color: #754BE9;
 }
 
 .search-input:not(:placeholder-shown) {
@@ -265,9 +271,8 @@ button {
 }
 
 .grid-container {
-  width: 1840px;
+  width: 100%;
   overflow: auto;
-  border-top: 1px solid #E6E6E6;
   height: 100%;
   padding-bottom: 10px;
   margin-top: 24px;
@@ -277,16 +282,20 @@ button {
 }
 
 .grid-header {
-  display: grid;
-  grid-template-columns: 434px min-content minmax(280px, 1fr);
+  border-top: 1px solid #E6E6E6;
+  display: flex;
   color: #9C9AA5;
   z-index: 101;
   background-color: white;
+  min-width: fit-content;
+}
+
+.grid-header__sub-grid-quater {
+  width: fit-content;
 }
 
 .grid-header__sub-grid {
-  display: grid;
-  grid-template-columns: auto repeat(3, 1fr);
+  display: flex;
   z-index: 100;
   background-color: white;
 }
@@ -297,7 +306,7 @@ button {
   }
 
   .grid-header__sub-grid-quater_inner {
-    width: 0;
+    width: 0 !important;
   }
 }
 
@@ -345,15 +354,13 @@ button {
   }
 }
 
-.grid-header__sub-grid-quater:not(.closed) {
-  .cell.last {
-    background-color: #EFEFEF;
-  }
+.grid-header__sub-grid-quater:not(.closed) .cell.last {
+  background-color: #EFEFEF;
 }
 
 .grid-header__sub-grid-quater_inner {
   display: flex;
-  width: 470px;
+  width: 642px;
   transition: .35s;
   overflow: hidden;
 }
@@ -373,7 +380,7 @@ button {
   text-wrap: nowrap;
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 120%;
   transition: .35s;
   display: flex;
@@ -391,12 +398,10 @@ button {
   text-align: right;
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 120%;
-}
-
-.main-cell {
-  width: 163px;
+  width: 284px;
+  flex: 1;
 }
 
 .grid-header__sub-grid-quater_wrap {
@@ -408,61 +413,62 @@ button {
   padding: 10px 0 0 16px;
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 120%;
   position: sticky;
   left: 0;
   background-color: white;
   z-index: 101;
+  min-width: 434px;
 }
 
 .empty-cell {
-  height: 40px;
+  height: 42px;
   transition: .35s;
 }
 
 .empty-cell.end {
-  width: 280px;
+  width: 284px;
   flex: 1;
 }
 
 .empty-cell.first {
-  width: 194px;
+  width: 214px;
 }
 
 .empty-cell.second {
-  width: 141px;
+  width: 214px;
 }
 
 .empty-cell.third {
-  width: 135px;
+  width: 214px;
 }
 
 .empty-cell.last {
-  width: 163px;
+  width: 284px;
 }
 
 .cell.first {
-  width: 194px;
+  width: 214px;
 }
 
 .cell.second {
-  width: 141px;
+  width: 214px;
 }
 
 .cell.third {
-  width: 135px;
+  width: 214px;
 }
 
 .cell.last {
-  width: 163px;
+  width: 284px;
 }
 
 .content-cell {
-  height: 58px;
+  height: 63px;
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 140%;
   text-align: end;
   display: flex;
@@ -473,23 +479,23 @@ button {
 }
 
 .content-cell.first {
-  width: 194px;
+  width: 214px;
 }
 
 .content-cell.second {
-  width: 141px;
+  width: 214px;
 }
 
 .content-cell.third {
-  width: 135px;
+  width: 214px;
 }
 
 .content-cell.last {
-  width: 163px;
+  width: 284px;
 }
 
 .content-cell.end {
-  width: 280px;
+  width: 284px;
   flex: 1;
 }
 
@@ -533,7 +539,7 @@ button {
 
 .accordion-title {
   width: 434px;
-  height: 40px;
+  height: 42px;
   cursor: pointer;
   background-color: #F6F6F6;
   display: flex;
@@ -546,7 +552,7 @@ button {
 
 .accordion-sub-grid {
   display: flex;
-  width: 470px;
+  width: 642px;
   transition: .35s;
   overflow: hidden;
 }
@@ -559,7 +565,6 @@ button {
   display: flex;
   flex-direction: column;
   transition: .35s;
-  /*overflow: hidden;*/
   height: 0;
   opacity: 0;
   transform: translateY(0);
@@ -572,7 +577,7 @@ button {
 
 .accordion-content__title {
   width: 434px;
-  height: 58px;
+  height: 63px;
   gap: 4px;
   flex-direction: column;
   padding: 10px 12px 10px 16px;
@@ -587,6 +592,12 @@ button {
   display: none;
 }
 
+.accordion-header__title, .accordion-content__title_main, .accordion-content__title_desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 .col-end,
 .empty-cell.end,
@@ -594,7 +605,7 @@ button {
   border-bottom: 1px solid #E6E6E6;
 }
 
-.grid-cell,
+.col-start,
 .sub-grid-quater,
 .cell,
 .accordion-title,
@@ -612,7 +623,7 @@ button {
 .accordion-content__title_main {
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 140%;
   color: #090714;
 }
@@ -620,7 +631,7 @@ button {
 .accordion-content__title_desc {
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 120%;
   color: #9C9AA5;
 }
@@ -628,7 +639,7 @@ button {
 .accordion-header__title {
   font-family: Suisse Intl;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 140%;
   color: #090714;
 }
@@ -659,6 +670,7 @@ button {
   display: flex;
   gap: 6px;
   align-items: center;
+  margin: auto;
 }
 
 .pagination-main__prev,
@@ -714,6 +726,7 @@ button {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  color: #090714
 }
 
 .select-wrapper {
@@ -772,4 +785,239 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: #754BE9;
+}
+
+@media (max-width: 2559px) {
+  .main {
+    padding: 12px 0 60px;
+  }
+  .first-block {
+    gap: 40px;
+  }
+  .first-block__title {
+    font-size: 14px;
+  }
+  .first-block__content-card-title { 
+    font-size: 14px;
+  }
+  .first-block__content-card_num {
+    font-size: 16px;
+  }
+  .first-block__content-cell-content {
+    font-size: 14px;
+  }
+  .first-block__content-card {
+    padding: 11.5px 20px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+  .grid-header__sub-grid-quater_inner, .accordion-sub-grid {
+    width: 470px;
+  }
+
+  .cell.first, .empty-cell.first, .content-cell.first {
+    width: 194px;
+  }
+
+  .cell.second, .empty-cell.second, .content-cell.second {
+    width: 141px;
+  }
+
+  .cell.third, .empty-cell.third, .content-cell.third {
+    width: 135px;
+  }
+
+  .cell.last, .empty-cell.last, .content-cell.last {
+    width: 163px;
+  }
+
+  .empty-cell.end, .content-cell.end, .col-end {
+    width: 280px;
+  }
+  .cell, .accordion-header__title, .accordion-content__title_main, .content-cell, .col-start, .col-end {
+    font-size: 14px;
+  }
+  .accordion-content__title_desc {
+    font-size: 12px;
+  }
+  .accordion-title, .empty-cell {
+    height: 40px;
+  }
+  .accordion-content__title, .content-cell {
+    height: 58px;
+  }
+}
+
+@media (max-width: 1919px) {
+  .main {
+    padding: 12px 0 29px;
+  }
+  .first-block {
+    gap: 47px;
+    padding: 12px 20px;
+  }
+  .first-block__container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .first-block__container:first-child {
+    min-width: 686px;
+  }
+  .first-block__content-cell-content {
+    height: 40px;
+  }
+  .first-block__description {
+    font-size: 10px;
+  }
+  .first-block__content-card {
+    padding: 14px 20px;
+  }
+  .first-block__content-card-description {
+    font-size: 10px;
+  }
+  .first-block__content-card_num {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1365px) {
+  .first-block {
+    margin: 0 16px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  .first-block__container {
+    min-width: 100% !important;
+  }
+  .first-block__divider {
+    width: 100%;
+  }
+  .main {
+    height: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .pagination-total {
+    width: 100%;
+  }
+  .pagination-select {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: 12px 0 13px;
+  }
+  .first-block__container {
+    gap: 16px;
+  }
+  .first-block__content {
+    flex-direction: column;
+  }
+  .first-block__content-multiplier, .first-block__content-equals {
+    display: none;
+  }
+  .first-block__content-cell {
+    flex-direction: column-reverse;
+    gap: 4px;
+  }
+  .first-block__content-cell-content {
+    font-size: 16px;
+    height: 48px;
+  }
+  .first-block__content-card-title {
+    display: none;
+  }
+  .first-block__content-card-description {
+    font-size: 14px;
+  }
+  .first-block__content-card {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 12px;
+  }
+  .first-block__content-card_num {
+    line-height: 100%;
+  }
+  .first-block__title {
+    font-size: 16px;
+  }
+  .first-block__description {
+    font-size: 12px;
+  }
+  .second-block {
+    margin: 0;
+    padding: 16px 0
+  }
+  .second-block__footer, .second-block__header {
+    padding: 0 16px;
+  }
+
+
+  .mobile-not-show {
+    display: none;
+  }
+
+  .col-start, .accordion-title, .accordion-content__title {
+    position: relative;
+  }
+
+  .empty-cell.end, .content-cell.end, .col-end {
+    width: 222px;
+  }
+
+  .col-start {
+    min-width: 269px;
+  }
+  .accordion-title, .accordion-content__title {
+    width: 269px;
+  }
+  .grid-container {
+    margin-left: 16px;
+    padding-right: 16px;
+  }
+  .pagination-main__prev,
+  .pagination-main__next {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #090714;
+    font-family: Suisse Intl;
+    font-weight: 500;
+    font-size: 0;
+    line-height: 20px;
+    gap: 0;
+    svg {
+      min-width: 16px;
+      min-height: 16px;
+      path {
+        fill: #090714
+      }
+    }
+  }
+
+  .pagination-main__next.disabled,
+  .pagination-main__prev.disabled {
+    color: #9C9AA5;
+    path {
+      fill: #9C9AA5;
+    }
+  }
 }
