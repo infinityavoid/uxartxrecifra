@@ -792,7 +792,7 @@ button {
   p {
     max-width: 600px;
     padding: 0 15px;
-    white-space: nowrap;
+    text-wrap: nowrap;
   }
 }
 
