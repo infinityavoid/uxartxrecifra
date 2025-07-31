@@ -779,13 +779,20 @@ button {
 
 .only-landscape {
   display: none;
-  height: 400px;
+  height: 457px;
   font-family: Suisse Intl;
   font-weight: 500;
   font-size: 16px;
-  color: #090714;
+  color: #9C9AA5;
   text-align: center;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  p {
+    max-width: 600px;
+    padding: 0 15px;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -991,7 +998,7 @@ button {
     padding-right: 16px;
   }
   .only-landscape {
-    display: block;
+    display: flex;
   }
   /* Медиа-запрос для альбомной ориентации */
   @media (orientation: landscape) {
@@ -1013,7 +1020,7 @@ button {
       height: 0;
     }
     .only-landscape {
-      display: block;
+      display: flex;
     }
   }
 
