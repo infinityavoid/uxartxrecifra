@@ -777,6 +777,17 @@ button {
   color: #090714;
 }
 
+.only-landscape {
+  display: none;
+  height: 400px;
+  font-family: Suisse Intl;
+  font-weight: 500;
+  font-size: 16px;
+  color: #090714;
+  text-align: center;
+  align-content: center;
+}
+
 ::-webkit-scrollbar {
   height: 2px;
   width: 2px;
@@ -962,16 +973,9 @@ button {
   .second-block__footer, .second-block__header {
     padding: 0 16px;
   }
-
-
-  .mobile-not-show {
-    display: none;
-  }
-
-  .col-start, .accordion-title, .accordion-content__title {
+  /*.col-start, .accordion-title, .accordion-content__title {
     position: relative;
-  }
-
+  }*/
   .empty-cell.end, .content-cell.end, .col-end {
     width: 222px;
   }
@@ -986,6 +990,37 @@ button {
     margin-left: 16px;
     padding-right: 16px;
   }
+  .only-landscape {
+    display: block;
+  }
+  /* Медиа-запрос для альбомной ориентации */
+  @media (orientation: landscape) {
+    .grid-container, .second-block__header {
+      display: flex;
+    }
+    .second-block__footer {
+      display: block;
+    }
+    .only-landscape {
+      display: none;
+    }
+  }
+
+  @media (orientation: portrait) {
+    .grid-container, .second-block__header, .second-block__footer {
+      visibility: hidden;
+      z-index: -9999;
+      height: 0;
+    }
+    .only-landscape {
+      display: block;
+    }
+  }
+
+  .mobile-not-show {
+    display: none;
+  }
+
   .pagination-main__prev,
   .pagination-main__next {
     width: 36px;

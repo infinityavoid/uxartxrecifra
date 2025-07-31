@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const paddingLeft = secondBlockStyles.getPropertyValue('padding-left');
     if (gridContainer && targetElement) {
       gridContainer.scrollTo({
-        left: targetElement.offsetLeft - (window.innerWidth > 767 ? colStart.offsetWidth : 0) - parseInt(paddingLeft) - parseInt(marginLeft) - (window.innerWidth <= 767 ? parseInt(gridMarginLeft) : 0),
+        left: targetElement.offsetLeft - colStart.offsetWidth - parseInt(paddingLeft) - parseInt(marginLeft) - (window.innerWidth <= 767 ? parseInt(gridMarginLeft) : 0),
         behavior: 'smooth'
       });
     }
